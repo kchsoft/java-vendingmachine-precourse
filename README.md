@@ -165,3 +165,13 @@ public enum Coin {
 - **Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위**로 추가한다.
    - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고한다.
+
+
+## 기능 목록
+- 금액 입력시 숫자 검증
+- 입력받은 자판기 보유 금액 분리(500/100/50/10)
+- 입력된 상품은 세미콜론;으로 분리 + 상품 내용은 콤마, 로 분리 및 저장
+- 상품 구매시 투입 금액 차감
+- 금액 차감 후 , 상품의 최저가 보다 금액이 낮거나 , 상품 제고가 없다면 금액 반환
+- 금액 반환시, 자판기 보유 금액으로 가능한 만큼 모두 반환.
+- 예외 처리(상품 이름 잘못 입력 할 경우, 
