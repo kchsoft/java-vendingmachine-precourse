@@ -1,7 +1,7 @@
 package vendingmachine.Validator;
 
 import java.util.regex.Pattern;
-import static vendingmachine.Constant.VendingErrMsg.ERR_MSG_MONEY_INPUT_NOT_NUBMER;
+import static vendingmachine.Constant.MachineErrMsg.ERR_MSG_MONEY_INPUT_NOT_NUBMER;
 
 public class InputValidator {
 

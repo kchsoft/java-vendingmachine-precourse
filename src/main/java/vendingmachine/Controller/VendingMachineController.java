@@ -1,25 +1,28 @@
 package vendingmachine.Controller;
 
-import vendingmachine.Service.VendingService;
+import vendingmachine.Domain.Coin;
+import vendingmachine.Service.CoinService;
+import vendingmachine.Service.MachineService;
+import vendingmachine.View.CoinOutputView;
 
 public class VendingMachineController {
 
-    VendingService vendingService;
+    MachineService machineService;
+    CoinService coinService;
 
     public VendingMachineController() {
-        this.vendingService = new VendingService();
+        this.machineService = new MachineService();
+        this.coinService = new CoinService();
     }
-
 
 
     public void machineStart() {
-        vendingProcess();
+        vendingMachineProcess();
     }
 
-    private void vendingProcess() {
-        int machineMoney = -1;
-        while (machineMoney < 0) {
-            machineMoney = vendingService.inputMoney();
-        }
+    private void vendingMachineProcess() {
+        int machineMoney = machineService.inputMachineMoney();
+        coinService.dvideMoneyToCoins(machineMoney);
+        CoinOutputView.printMachineCoin();
     }
 }
