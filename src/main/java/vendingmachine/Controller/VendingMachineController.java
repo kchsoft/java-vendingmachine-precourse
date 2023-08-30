@@ -24,5 +24,9 @@ public class VendingMachineController {
         int machineMoney = machineService.inputMachineMoney();
         coinService.dvideMoneyToRandomCoins(machineMoney);
         CoinOutputView.printMachineCoin();
+        String[] stringProduct = machineService.inputMachineProducts();
+        for (String s : stringProduct) {
+            System.out.println("s = " + s);
+        }
     }
 }
