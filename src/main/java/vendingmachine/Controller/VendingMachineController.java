@@ -22,7 +22,7 @@ public class VendingMachineController {
 
     private void vendingMachineProcess() {
         int machineMoney = machineService.inputMachineMoney();
-        coinService.dvideMoneyToCoins(machineMoney);
+        coinService.dvideMoneyToRandomCoins(machineMoney);
         CoinOutputView.printMachineCoin();
     }
 }
