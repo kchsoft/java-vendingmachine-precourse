@@ -18,12 +18,11 @@ public class InputValidator {
             ProductValidator.isStringToProductFormat(stringProduct);
             stringProductInfo = getStringProductInfo(stringProduct);
             isCorrectCoin(stringProductInfo[PRODUCT_PRICE_INDEX]);
-            isCorrectCoin(stringProductInfo[PRODUCT_CNT_INDEX]);
         }
     }
 
     private static String[] getStringProductInfo(String stringProduct) {
-        stringProduct = stringProduct.substring(1, stringProduct.length() - 2);
+        stringProduct = stringProduct.substring(1, stringProduct.length() - 1);
        return stringProduct.split(",");
     }
 }
