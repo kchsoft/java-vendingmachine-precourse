@@ -10,7 +10,7 @@ public class MachineInput {
     public static int inputMoney() {
         String stringMoney = readLine();
         try {
-            InputValidator.isCorrectMachineCoin(stringMoney);
+            InputValidator.isValidCoin(stringMoney);
             return Integer.parseInt(stringMoney);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

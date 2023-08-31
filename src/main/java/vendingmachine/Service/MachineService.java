@@ -2,23 +2,23 @@ package vendingmachine.Service;
 
 import vendingmachine.Domain.MachineInput;
 import vendingmachine.Domain.Product;
+import vendingmachine.View.GameGuideOutputView;
 
 import java.util.HashMap;
 
-import static vendingmachine.Constant.MachineGuideMsg.MACHINE_GUIDE_MACHINE_MONEY_USER_INPUT;
-import static vendingmachine.Constant.MachineGuideMsg.MACHINE_GUIDE_MACHINE_PRODUCT_USER_INPUT;
+import static vendingmachine.Constant.MachineGuideMsg.*;
 
 public class MachineService {
-    public int inputMachineMoney() {
+    public int receiveMoney(String Mode) {
         int machineMoney = -1;
         while (machineMoney < 0) {
-            System.out.println(MACHINE_GUIDE_MACHINE_MONEY_USER_INPUT);
+            GameGuideOutputView.receiveMoneyGuideMsg(Mode);
             machineMoney = MachineInput.inputMoney();
         }
         return machineMoney;
     }
 
-    public HashMap<String, Product> inputMachineProducts() {
+    public HashMap<String, Product> setProducts() {
         String[] stringProducts = null;
         while (stringProducts == null) {
             System.out.println(MACHINE_GUIDE_MACHINE_PRODUCT_USER_INPUT);
