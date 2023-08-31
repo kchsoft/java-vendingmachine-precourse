@@ -7,7 +7,13 @@ import static vendingmachine.Constant.MachineDefaultValue.PRODUCT_PRICE_INDEX;
 
 public class InputValidator {
 
-    public static void isCorrectCoin(String stringMoney) throws IllegalArgumentException{
+    public static void isCorrectMachineCoin(String stringMoney) throws IllegalArgumentException {
+        CoinValidator.isStringtoInteger(stringMoney);
+        int money = Integer.parseInt(stringMoney);
+        CoinValidator.isCorrectMoneyUnit(money);
+    }
+
+    public static void isCorrectProductPrice(String stringMoney) throws IllegalArgumentException {
         CoinValidator.isStringtoInteger(stringMoney);
         int money = Integer.parseInt(stringMoney);
         CoinValidator.isCorrectMoneyUnit(money);
@@ -19,7 +25,7 @@ public class InputValidator {
         for (String stringProduct : stringProducts) {
             ProductValidator.isStringToProductFormat(stringProduct);
             stringProductInfo = Product.getStringProductInfo(stringProduct);
-            isCorrectCoin(stringProductInfo[PRODUCT_PRICE_INDEX]);
+            isCorrectProductPrice(stringProductInfo[PRODUCT_PRICE_INDEX]);
         }
     }
 }

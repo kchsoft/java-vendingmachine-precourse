@@ -9,7 +9,7 @@ import static vendingmachine.Constant.MachineGuideMsg.MACHINE_GUIDE_MACHINE_MONE
 import static vendingmachine.Constant.MachineGuideMsg.MACHINE_GUIDE_MACHINE_PRODUCT_USER_INPUT;
 
 public class MachineService {
-    public int userInputMachineMoney() {
+    public int inputMachineMoney() {
         int machineMoney = -1;
         while (machineMoney < 0) {
             System.out.println(MACHINE_GUIDE_MACHINE_MONEY_USER_INPUT);
@@ -18,7 +18,7 @@ public class MachineService {
         return machineMoney;
     }
 
-    public HashMap<String, Product> userInputMachineProducts() {
+    public HashMap<String, Product> inputMachineProducts() {
         String[] stringProducts = null;
         while (stringProducts == null) {
             System.out.println(MACHINE_GUIDE_MACHINE_PRODUCT_USER_INPUT);

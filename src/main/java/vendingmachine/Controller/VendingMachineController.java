@@ -23,9 +23,9 @@ public class VendingMachineController {
     }
 
     private void vendingMachineProcess() {
-        int machineMoney = machineService.userInputMachineMoney();
+        int machineMoney = machineService.inputMachineMoney();
         coinService.dvideMoneyToRandomCoins(machineMoney);
         CoinOutputView.printMachineCoin();
-        HashMap<String, Product> products = machineService.userInputMachineProducts();
+        HashMap<String, Product> products = machineService.inputMachineProducts();
     }
 }
