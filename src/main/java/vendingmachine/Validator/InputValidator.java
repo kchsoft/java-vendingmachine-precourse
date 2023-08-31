@@ -1,5 +1,7 @@
 package vendingmachine.Validator;
 
+import vendingmachine.Domain.Product;
+
 import static vendingmachine.Constant.MachineDefaultValue.PRODUCT_CNT_INDEX;
 import static vendingmachine.Constant.MachineDefaultValue.PRODUCT_PRICE_INDEX;
 
@@ -16,13 +18,8 @@ public class InputValidator {
         String[] stringProductInfo;
         for (String stringProduct : stringProducts) {
             ProductValidator.isStringToProductFormat(stringProduct);
-            stringProductInfo = getStringProductInfo(stringProduct);
+            stringProductInfo = Product.getStringProductInfo(stringProduct);
             isCorrectCoin(stringProductInfo[PRODUCT_PRICE_INDEX]);
         }
-    }
-
-    private static String[] getStringProductInfo(String stringProduct) {
-        stringProduct = stringProduct.substring(1, stringProduct.length() - 1);
-       return stringProduct.split(",");
     }
 }

@@ -1,9 +1,11 @@
 package vendingmachine.Controller;
 
-import vendingmachine.Domain.Coin;
+import vendingmachine.Domain.Product;
 import vendingmachine.Service.CoinService;
 import vendingmachine.Service.MachineService;
 import vendingmachine.View.CoinOutputView;
+
+import java.util.HashMap;
 
 public class VendingMachineController {
 
@@ -24,7 +26,6 @@ public class VendingMachineController {
         int machineMoney = machineService.userInputMachineMoney();
         coinService.dvideMoneyToRandomCoins(machineMoney);
         CoinOutputView.printMachineCoin();
-        String[] stringProduct = machineService.userInputMachineProducts();
-
+        HashMap<String, Product> products = machineService.userInputMachineProducts();
     }
 }

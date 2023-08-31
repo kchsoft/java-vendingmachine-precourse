@@ -10,13 +10,16 @@ public class Product {
 
 
     public Product(String stringProduct) {
-        stringProduct = stringProduct.substring(1, stringProduct.length() - 2);
-        String[] productInfo = stringProduct.split(",");
+        String[] productInfo = getStringProductInfo(stringProduct);
         this.name = productInfo[0];
         this.price = Integer.parseInt(productInfo[1]);
         this.cnt = Integer.parseInt(productInfo[2]);
     }
 
+    public static String[] getStringProductInfo(String stringProduct) {
+        stringProduct = stringProduct.substring(1, stringProduct.length() - 1);
+        return stringProduct.split(",");
+    }
 
     public String getName() {
         return name;
@@ -26,11 +29,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getCost() {
+    public int getPrice() {
         return price;
     }
 
-    public void setCost(int price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
