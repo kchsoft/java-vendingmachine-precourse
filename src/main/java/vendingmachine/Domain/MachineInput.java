@@ -1,7 +1,7 @@
 package vendingmachine.Domain;
 
-import vendingmachine.Validator.CoinValidator;
 import vendingmachine.Validator.ProductValidator;
+import vendingmachine.Validator.InputValidator;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -10,7 +10,7 @@ public class MachineInput {
     public static int inputMoney() {
         String stringMoney = readLine();
         try {
-            CoinValidator.isStringtoInteger(stringMoney);
+            InputValidator.isCorrectCoin(stringMoney);
             return Integer.parseInt(stringMoney);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -22,7 +22,7 @@ public class MachineInput {
         String stringProdct = readLine();
         String[] stringProducts = stringProdct.split(";");
         try {
-            ProductValidator.isProductFormat(stringProducts);
+            InputValidator.isProductFormat(stringProducts);
             return stringProducts;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

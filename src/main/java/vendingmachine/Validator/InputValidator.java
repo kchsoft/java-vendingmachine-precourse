@@ -1,13 +1,29 @@
 package vendingmachine.Validator;
 
-import java.util.regex.Pattern;
-import static vendingmachine.Constant.MachineErrMsg.ERR_MSG_MONEY_INPUT_NOT_NUBMER;
+import static vendingmachine.Constant.MachineDefaultValue.PRODUCT_CNT_INDEX;
+import static vendingmachine.Constant.MachineDefaultValue.PRODUCT_PRICE_INDEX;
 
 public class InputValidator {
 
-    public static void isStringtoInteger(String inputMoney)throws IllegalArgumentException {
-        String integerPattern = "^[0-9]+$";
-        Pattern compiled = Pattern.compile(integerPattern);
-        if(!compiled.matcher(inputMoney).matches()) throw new IllegalArgumentException(ERR_MSG_MONEY_INPUT_NOT_NUBMER);
+    public static void isCorrectCoin(String stringMoney) throws IllegalArgumentException{
+        CoinValidator.isStringtoInteger(stringMoney);
+        int money = Integer.parseInt(stringMoney);
+        CoinValidator.isCorrectMoneyUnit(money);
+        CoinValidator.isMinPriceOver(money);
+    }
+
+    public static void isProductFormat(String[] stringProducts) throws IllegalArgumentException {
+        String[] stringProductInfo;
+        for (String stringProduct : stringProducts) {
+            ProductValidator.isStringToProductFormat(stringProduct);
+            stringProductInfo = getStringProductInfo(stringProduct);
+            isCorrectCoin(stringProductInfo[PRODUCT_PRICE_INDEX]);
+            isCorrectCoin(stringProductInfo[PRODUCT_CNT_INDEX]);
+        }
+    }
+
+    private static String[] getStringProductInfo(String stringProduct) {
+        stringProduct = stringProduct.substring(1, stringProduct.length() - 2);
+       return stringProduct.split(",");
     }
 }

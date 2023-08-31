@@ -21,12 +21,10 @@ public class VendingMachineController {
     }
 
     private void vendingMachineProcess() {
-        int machineMoney = machineService.inputMachineMoney();
+        int machineMoney = machineService.userInputMachineMoney();
         coinService.dvideMoneyToRandomCoins(machineMoney);
         CoinOutputView.printMachineCoin();
-        String[] stringProduct = machineService.inputMachineProducts();
-        for (String s : stringProduct) {
-            System.out.println("s = " + s);
-        }
+        String[] stringProduct = machineService.userInputMachineProducts();
+
     }
 }
