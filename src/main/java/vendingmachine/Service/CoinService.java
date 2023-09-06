@@ -21,6 +21,7 @@ public class CoinService {
         }
         return machineMoney;
     }
+
     private void makeCoinList(List<Integer> coinAmountList) {
         coinAmountList.add(Coin.COIN_500.getAmount());
         coinAmountList.add(Coin.COIN_100.getAmount());
@@ -34,15 +35,31 @@ public class CoinService {
         makeCoinList(coinAmountList);
         while (machineMoney != 0) {
             randAmount = pickNumberInList(coinAmountList);
-            machineMoney = minusRandCoinAmount(machineMoney,randAmount);
+            machineMoney = minusRandCoinAmount(machineMoney, randAmount);
         }
         return;
     }
 
     private int minusRandCoinAmount(int machineMoney, int amount) {
-        if(machineMoney - amount < 0) return machineMoney;
+        if (machineMoney - amount < 0) return machineMoney;
         Coin coin = Coin.valueOf("COIN_" + amount);
         coin.plusOneCnt();
         return machineMoney - amount;
+    }
+
+    public int calSmallChange(int userMoney) {
+        int coinCnt = 0;
+        for (Coin coin : Coin.values()) {
+            coinCnt = subtractCoinFromUserMoney(userMoney,coin);
+            coin.setCnt(coinCnt);
+            userMoney -= coin.getAmount() * coin.getCnt();
+        }
+        return userMoney;
+    }
+
+    private int subtractCoinFromUserMoney(int userMoney, Coin coin) {
+        int tmpCoinCnt = userMoney / coin.getAmount();
+        if (tmpCoinCnt <= coin.getCnt()) return tmpCoinCnt;
+        return coin.getCnt();
     }
 }

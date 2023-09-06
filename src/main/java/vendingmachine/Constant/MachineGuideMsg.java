@@ -6,6 +6,5 @@ public class MachineGuideMsg {
     public final static String MACHINE_GUIDE_MACHINE_MONEY_COIN_VIEW = "%d원 - %d개\n";
     public final static String MACHINE_GUIDE_MACHINE_PRODUCT_USER_INPUT= "상품명과 가격, 수량을 입력해 주세요.";
     public final static String MACHINE_GUIDE_USER_MONEY_USER_INPUT= "투입 금액을 입력해 주세요.";
-
-
+    public final static String MACHINE_GUIDE_MACHINE_MONEY_SMALL_CHANGE= "잔돈";
 }

@@ -24,7 +24,8 @@ public class VendingMachineController {
     public void vendingMachineProcess() {
         HashMap<String,Product> products = setMachineState();
         int userMoney = setUserMoney();
-        vendProcess(userMoney,products);
+        userMoney = vendProcess(userMoney,products);
+        userMoney = machineSmallChangeGuide(userMoney);
     }
 
     private HashMap<String,Product> setMachineState() {
@@ -37,7 +38,7 @@ public class VendingMachineController {
     private int setUserMoney() {
         return coinService.receiveMoney(USER_MODE);
     }
-    private void vendProcess(int userMoney, HashMap<String,Product> products) {
+    private int vendProcess(int userMoney, HashMap<String,Product> products) {
         int minProductPrice = productService.findMinProductPrice(products);
         boolean checkVendProcess = true;
         while (checkVendProcess) {
@@ -47,5 +48,13 @@ public class VendingMachineController {
             if(userMoney < minProductPrice) checkVendProcess = false;
             if(!productService.checkProductStock(products)) checkVendProcess = false;
         }
+        return userMoney;
+    }
+
+    public int machineSmallChangeGuide(int userMoney) {
+        System.out.printf("투입 금액: %d원\n",userMoney);
+        userMoney = coinService.calSmallChange(userMoney);
+        CoinOutputView.printMachineSmallChange();
+        return userMoney;
     }
 }
