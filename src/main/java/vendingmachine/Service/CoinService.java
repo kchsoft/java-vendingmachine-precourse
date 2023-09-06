@@ -1,6 +1,8 @@
 package vendingmachine.Service;
 
 import vendingmachine.Domain.Coin;
+import vendingmachine.Domain.MachineInput;
+import vendingmachine.View.GameGuideOutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,14 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class CoinService {
 
+    public int receiveMoney(String Mode) {
+        int machineMoney = -1;
+        while (machineMoney < 0) {
+            GameGuideOutputView.receiveMoneyGuideMsg(Mode);
+            machineMoney = MachineInput.inputMoney();
+        }
+        return machineMoney;
+    }
     private void makeCoinList(List<Integer> coinAmountList) {
         coinAmountList.add(Coin.COIN_500.getAmount());
         coinAmountList.add(Coin.COIN_100.getAmount());

@@ -3,6 +3,8 @@ package vendingmachine.Domain;
 import vendingmachine.Validator.ProductValidator;
 import vendingmachine.Validator.InputValidator;
 
+import java.util.HashMap;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class MachineInput {
@@ -18,7 +20,7 @@ public class MachineInput {
         }
     }
 
-    public static String[] inputProducts() {
+    public static String[] registerProducts() {
         String stringProdct = readLine();
         String[] stringProducts = stringProdct.split(";");
         try {
@@ -28,5 +30,16 @@ public class MachineInput {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    public static Product choiceProduct(HashMap<String,Product> products) {
+        String productName = readLine();
+        try {
+            InputValidator.isVallidProduct(products,productName);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return products.get(productName);
     }
 }
