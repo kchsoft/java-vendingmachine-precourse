@@ -12,12 +12,10 @@ import static vendingmachine.Constant.MachineDefaultValue.USER_MODE;
 
 public class VendingMachineController {
 
-    MachineService machineService;
     CoinService coinService;
     ProductService productService;
 
     public VendingMachineController() {
-        this.machineService = new MachineService();
         this.coinService = new CoinService();
         this.productService = new ProductService();
     }
